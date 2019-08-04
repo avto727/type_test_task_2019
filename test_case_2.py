@@ -4,7 +4,7 @@ from time import sleep
 # Скрипт выполняет авторизацию на сайте https://portal.servers.com, заполняет бланк заявки, logout.
 
 def case_2(self):
-    print('\n Запуск Тест кейс № 2 Create order \n')
+    print('\n Запуск Тест кейс № 2 Fill order \n')
     email = "ask_ev_avto727@mail.ru"
     passw = '9367ccdfb86a'
     self.page.login_servers_com(email, passw)
