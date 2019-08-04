@@ -1,7 +1,7 @@
 from page import *
 from time import sleep
 # Предусловие - "
-# Скрипт выполнЕт авторизацию на сайте https://portal.servers.com + logout
+# Скрипт выполняет авторизацию на сайте https://portal.servers.com + logout
 
 def case_1(self):
     print('\n Запуск Тест кейс № 1 login \n')
