@@ -2,7 +2,6 @@ import pytest
 from selenium import webdriver
 from test_case_1 import case_1
 from test_case_2 import case_2
-
 from page import *
 
 
@@ -25,8 +24,8 @@ class Test():
     def teardown(self):
         self.driver.close()
 
-    # def test_case_1(self):
-    #     case_1(self)
+    def test_case_1(self):
+        case_1(self)
 
     def test_case_2(self):
         case_2(self)
