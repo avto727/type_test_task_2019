@@ -3,3 +3,4 @@
 .DS_Store
 specs/test*
 .gitignore
+/.pytest_cache
