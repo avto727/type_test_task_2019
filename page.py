@@ -34,6 +34,15 @@ class ResultPage(BasePage):
         # print(ls)
         return ls
 
+    def find_text(self, find, index=0):
+        page = MainPage(self.driver)
+        dir_f = {
+            "Создать": './/a[@class="action-btn--edit user-edit"]',
+        }
+        xpath = dir_f.get(find)
+        page.waitForElementClickable(xpath, 12)
+        text = self.driver.find_elements_by_xpath(xpath)[index].text
+        return text
 
 class Admin(BasePage):
 
@@ -87,7 +96,7 @@ class MainPage(BasePage):
     'Swap_Install_add_ons': {'func': self.target, 'path': './/span[text()="Install add-ons"]'},
     'Swap_hostname': {'func': self.target, 'path': './/div[@class="ng-binding server-hosts-selector-styles__name___sNI7S"]'},
     'Swap_email_login': {'func': self.target, 'path': './/div[@class="CurrentUserWidget-sc-1xtml1f-0 VMdDP"]'},
-    'Button_Enter': {'func': self.click_id, 'path': 'submit-login'},
+    'Button_Enter': {'func': self.click_xpath, 'path': './/input[@id="submit-login"]'},
 
         }
               #   MainPage
