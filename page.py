@@ -34,53 +34,6 @@ class ResultPage(BasePage):
         # print(ls)
         return ls
 
-    def find_all_link(self, tag_, class_):
-        page = MainPage(self.driver)
-        path = './/ttag[@class="cclass"]'
-        path_1 = path.replace('ttag', tag_)
-        xpath = path_1.replace('cclass', class_)
-        page.waitForElementVisible(xpath, 7)
-        time.sleep(2)
-        table = self.driver.page_source
-        soup = BeautifulSoup(table, 'html.parser')
-        ts = soup.find_all(tag_, class_)
-        # print(ts)
-        return ts
-
-    def find_x(self, tag_, class_):
-        # print(self, tag_, class_)
-        time.sleep(1)
-        table = self.driver.page_source
-        soup = BeautifulSoup(table, 'html.parser')
-        ts = soup.find(tag_, class_)
-        ls = ts.find('a').get('clip_name')
-        # print(ls)
-        return ls
-
-    def find_tag(self, tag_):
-        # print(self, tag_, class_)
-        time.sleep(1)
-        table = self.driver.page_source
-        soup = BeautifulSoup(table, 'html.parser')
-        # print('Это суп', soup)
-        ls = soup.find(tag_)
-        # print(ls)
-        return ls
-
-    def find_all_tag(self, tag_):
-        # print(self, tag_, class_)
-        time.sleep(1)
-        table = self.driver.page_source
-        soup = BeautifulSoup(table, 'html.parser')
-        # print('Это суп', soup)
-        ls = soup.find_all(tag_)
-        # print(ls)
-        return ls
-
-        def simple_find(self, xpath, number):
-            ls = self.driver.find_elements_by_xpath(xpath)[number]
-        # print(ls)
-        return ls
 
 class Admin(BasePage):
 
@@ -134,6 +87,7 @@ class MainPage(BasePage):
     'Swap_Install_add_ons': {'func': self.target, 'path': './/span[text()="Install add-ons"]'},
     'Swap_hostname': {'func': self.target, 'path': './/div[@class="ng-binding server-hosts-selector-styles__name___sNI7S"]'},
     'Swap_email_login': {'func': self.target, 'path': './/div[@class="CurrentUserWidget-sc-1xtml1f-0 VMdDP"]'},
+    'Button_Enter': {'func': self.click_id, 'path': 'submit-login'},
 
         }
               #   MainPage
@@ -148,6 +102,8 @@ class MainPage(BasePage):
             'Ввод_логина': {'func': self.send_name, 'path': 'email', 'text':text},
             'Ввод_пароля': {'func': self.send_name, 'path': 'pwd', 'text':text},
             'Ввод_hostname': {'func': self.send_name, 'path': 'hostname', 'text':text},
+            'Send_login_paritet': {'func': self.send_name, 'path': 'Login', 'text':text},
+            'Send_password_paritet': {'func': self.send_name, 'path': 'Password', 'text':text},
 
         }
         self.args = self.pages[name].get('path')  # выбор path по ключу
@@ -155,43 +111,8 @@ class MainPage(BasePage):
         self.func(self.args, text)  # Вызов нужной функции с id = path
         print('Шаг ' + step + '.  ' + name + ' ' + text + ' произведен')
 
-    #  Функция клик пропуска фулл скрина test case 9 + all Sony
-    def click_button(self, bc):
-        button_xpath = ('.//button[text()="%s"]' % bc)
-        # self.loger_info(button_xpath)
-        self.driver.find_element_by_xpath(button_xpath).click()
 
-    #  Функция клик кнопок верхнего меню
-    def click_div(self, dep):
-        up_xpath = ('.//div[text()="%s"]' % dep)
-        self.waitForElementClickable(up_xpath, 30)
-        time.sleep(1)
-        self.driver.find_element_by_xpath(up_xpath).click()
-        # print('Клик', dep)
-        return
 
-    #  Функция клик вкладок
-    def click_li(self, dep):
-        li_xpath = ('.//li[text()="%s"]' % dep)
-        self.waitForElementClickable(li_xpath, 30)
-        time.sleep(1)
-        self.driver.find_element_by_xpath(li_xpath).click()
-        # print('Клик', dep)
-
-    #  Функция клик вкладок .//a[text()="%s"]
-    def click_a(self, dep):
-        a_xpath = ('.//a[text()="%s"]' % dep)
-        self.waitForElementClickable(a_xpath, 10)
-        self.driver.find_element_by_xpath(a_xpath).click()
-        # print('Клик', dep)
-
-    #  Функция клик вкладок
-    def click_span(self, dep):
-        span_xpath = ('.//span[text()="%s"]' % dep)
-        self.waitForElementClickable(span_xpath, 30)
-        time.sleep(1)
-        self.driver.find_element_by_xpath(span_xpath).click()
-        # print('Клик', dep)
 
     def click_id(self, args):
         dep = args['path']
@@ -286,6 +207,11 @@ class MainPage(BasePage):
         self.send_f('Ввод_логина', email, 1)
         self.send_f('Ввод_пароля', passw, 2)
         self.click_f('Клик_Вход_Signin', 3)
+
+    def login_paritet(self, email, passw):
+        self.send_f('Send_login_paritet', email, 1)
+        self.send_f('Send_password_paritet', passw, 2)
+        self.click_f('Button_Enter', 3)
 
     def logout(self):
         self.click_f('Клик_login', 1)
