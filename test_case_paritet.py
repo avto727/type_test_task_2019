@@ -1,10 +1,9 @@
 from page import *
 from time import sleep
 # Предусловие - "
-# Скрипт выполняет авторизацию на сайте https://portal.servers.com, заполняет бланк заявки, logout.
+# Скрипт выполняет авторизацию на сайте https://master.edo-paritet.ru:9443, заполняет бланк заявки, logout.
 
 def case_paritet(self):
-    print('\n Запуск Тест кейс № 2 Fill order \n')
     login = "manag3"
     passw = '12345678'
     print('\n Запуск Тест кейс № 1 login \n')

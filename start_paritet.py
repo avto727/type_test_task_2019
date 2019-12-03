@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from test_case_paritet import test_case_paritet
+from test_case_paritet import case_paritet
 from page import *
 
 
@@ -11,7 +11,7 @@ class Test_paritet():
         options.add_argument('--incognito')  # Запуск браузера в режиме инкогнито
         self.driver = webdriver.Chrome(options=options)
         self.driver.get("https://master.edo-paritet.ru:9443")
-        self.driver.maximize_window()
+        # self.driver.maximize_window()
         self.driver.implicitly_wait(10)
         self.page = MainPage(self.driver)
         self.prof = Profile(self.driver)
