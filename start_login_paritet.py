@@ -1,4 +1,5 @@
 import pytest
+import chromedriver_binary
 from selenium import webdriver
 from test_case_paritet import case_paritet
 from page import *
