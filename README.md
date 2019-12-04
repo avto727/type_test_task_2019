@@ -5,7 +5,8 @@
 
 ## Run tests:
 * 1 in terminal `pip3 install -r requirements.txt`
-* 2 run `pytest -s start_paritet.py`
+* 2 run `python api.py`
+* 3 run `pytest -s start_paritet.py`
  or directly with project:
 
 ## Troubleshooting
